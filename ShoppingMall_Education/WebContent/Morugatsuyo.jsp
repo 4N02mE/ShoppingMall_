@@ -32,7 +32,7 @@ try
     	 System.out.println(insert_query);
     	 //insert_stmt.executeQuery(insert_query);
     	 }
- 	
+ 	 
  	while(rs.next()) {
  		int A = rs.getInt("COL1");
  		int B = rs.getInt("COL2");
