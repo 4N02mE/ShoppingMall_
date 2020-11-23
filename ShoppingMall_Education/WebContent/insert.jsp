@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,43 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<form action="action/action_insert.jsp">
+	<p>카테고리ID</p>
+	<select name="select">
+<%
+	try
+	{
+	    Class.forName("oracle.jdbc.driver.OracleDriver");
+	    Connection con=DriverManager.getConnection(
+	    "jdbc:oracle:thin:@localhost:1521:xe","SMC_USER","SMC_USER");
+	    Statement select_stmt = con.createStatement();
+	    String select_query = "SELECT ID, NAME FROM CATEGORY";
+	    
+	    ResultSet rs = select_stmt.executeQuery(select_query);
+	    while(rs.next()) {
+	    	%>
+	    		<option value = <%=rs.getInt("ID") %>><%=rs.getString("NAME") %></option>
+	    	<%
+	    }
+	    con.close();
+	}
+	
+	catch(Exception e)
+	{ 
+	    System.out.println(e);
+	}
+%>
+	</select>
+	<p>이름</p> <input type="text" name="name">
+	<p>가격</p> <input type="number" name="price">
+	<p>재고</p> <input type="number" name="stock">
+	<p>설명</p> <input type="text" name="description">
+	<p>원산지</p> <input type="text" name="origin">
+	<br><br>
+	<input type="submit" value="제출">
+	<input type="button" value="다시쓰기">
+</form>
 
 </body>
 </html>
