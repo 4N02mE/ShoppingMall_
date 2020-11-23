@@ -1,0 +1,14 @@
+-action
+    product_insert.jsp
+    payment_insert.jsp
+-page
+    header.jsp
+    nav.jsp
+    footer.jsp
+-section
+    product_create.jsp 
+    payment_create.jsp
+    product_list.jsp
+    payment_list.jsp
+    payment_list_by_product.jsp
+    payment_list_by_category.jsp
