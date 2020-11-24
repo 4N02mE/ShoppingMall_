@@ -4,30 +4,18 @@
 
 <h3>판매 등록</h3>
 <table border="1">
-<%
+	<%
 	try
 	{  
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection con=DriverManager.getConnection(  
-		"jdbc:oracle:thin:@localhost:1521:xe","SMC_USER","SMC_USER");
-		Statement select_stmt=con.createStatement();  
-						
-		String query = "SELECT ID, NAME FROM CATEGORY";
-						
-		ResultSet rs=select_stmt.executeQuery(query);  
-		while(rs.next()) {
-			%><option value="<%=rs.getInt(1) %>"><%=rs.getString(2) %></option><%
-		}%>
-	<form >
+	Class.forName("oracle.jdbc.driver.OracleDriver");
+	Connection con=DriverManager.getConnection(  
+	"jdbc:oracle:thin:@localhost:1521:xe","SMC_USER","SMC_USER");
+	Statement select_stmt=con.createStatement();		
+	%>
+	<form>
 		<tr>
 			<td>
 				<p>카테고리 ID</p>
-			</td>
-			<td>
-				<select name="category_id">
-					
-						
-				</select>
 			</td>
 		</tr>
 		<tr>
@@ -47,17 +35,15 @@
 			<td><input type="text" name="description"></td>
 		</tr>
 		<tr>
-		<%
-		String select_member_query = "SELECT ID, NAME FORM MEMBER";
-		ResultSet memberRs = select_stmt.executeQuery(select_member_query);
-		%>
 			<td><p>고객명</p></td>
 			<td>
-				<select>
-					<%
-						while(memberRs.next()) {
-							%><option value=<%=rs.getInt("ID") %>><%=rs.getString("NAME") %><%
-						}
+				<select name="member_id">
+					<%  
+					String select_member_query = "SELECT ID, NAME FROM MEMBER";
+					ResultSet memberRs = select_stmt.executeQuery(select_member_query);
+					while(memberRs.next()) {
+						%><option value=<%=memberRs.getInt("ID") %>><%=memberRs.getString("NAME") %></option><%
+					}
 					%>
 				</select>
 			</td>
@@ -69,12 +55,12 @@
 			</td>
 		</tr>
 	</form>
-<%
-	con.close();  
-	}
-catch(Exception e)
+	<%
+		con.close();  
+		}
+	catch(Exception e)
 	{ 
 	System.out.println(e);
-}  
-%>
+	}  
+	%>
 </table>
