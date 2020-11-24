@@ -12,12 +12,7 @@
 	"jdbc:oracle:thin:@localhost:1521:xe","SMC_USER","SMC_USER");
 	Statement select_stmt=con.createStatement();		
 	%>
-	<form>
-		<tr>
-			<td>
-				<p>카테고리 ID</p>
-			</td>
-		</tr>
+	<form action="action/payment_insert.jsp">
 		<tr>
 			<td><p>주문일</p></td>
 			<td><input type="date" name="name"></td>
@@ -28,11 +23,7 @@
 		</tr>
 		<tr>
 			<td><p>주문 갯수</p></td>
-			<td><input type="number" name="stock"></td>
-		</tr>
-		<tr>
-			<td><p>가격</p></td>
-			<td><input type="number" name="price"></td>
+			<td><input type="number" nasme="stock"></td>
 		</tr>
 		<tr>
 			<td><p>상품명</p></td>
