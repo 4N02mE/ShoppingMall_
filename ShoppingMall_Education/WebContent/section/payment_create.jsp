@@ -15,15 +15,11 @@
 	<form action="action/payment_insert.jsp">
 		<tr>
 			<td><p>주문일</p></td>
-			<td><input type="date" name="name"></td>
-		</tr>
-		<tr>
-			<td><p>주문 상태</p></td>
-			<td><input type="text" name="name"></td>
+			<td><input type="date" name="date"></td>
 		</tr>
 		<tr>
 			<td><p>주문 갯수</p></td>
-			<td><input type="number" nasme="stock"></td>
+			<td><input type="number" name="stock"></td>
 		</tr>
 		<tr>
 			<td><p>상품명</p></td>
